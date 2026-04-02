@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-outfit);
+  --font-outfit: var(--font-outfit);
+  --font-roboto-slab: var(--font-roboto-slab);
+
+  --color-homeBg: #f3f6f6;
+  --color-homeTwoBg-dark: #111111;
+  --image-homeBg: url("/images/background/bg.jpg");
+  --image-homeTwoBg-dark: url("/images/background/bg-dark.jpg");
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@layer base {
+  body {
+    @apply font-outfit;
+  }
+}
+
+.bg-homeBg {
+  background-image: var(--image-homeBg);
+}
+
+.dark .bg-homeBg {
+  background-image: var(--image-homeTwoBg-dark);
+}
+
+/* Custom Styles from portfolio */
+.socialbtn {
+  @apply w-[44px] h-[44px] flex items-center justify-center rounded-[10px] transition-all duration-300 bg-[#F3F6F6] dark:bg-[#212425] hover:bg-gradient-to-r hover:from-[#FA5252] hover:to-[#DD2476] hover:text-white;
+}
+
+.dowanload-btn {
+  @apply py-3 px-8 rounded-[35px] text-white bg-gradient-to-r from-[#FA5252] to-[#DD2476] transition-all duration-300 hover:bg-gradient-to-l;
+}
+
+.stack-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-page-header {
+  @apply w-fit p-[20px] px-6 rounded-[20px] bg-white dark:bg-[#111111];
+}
+
+.site-page-nav {
+  @apply flex items-center gap-6;
+}
+
+.about-box {
+  @apply p-6 rounded-[20px] border border-gray-100 dark:border-[#212425] flex gap-4 transition-all duration-300 hover:shadow-md;
+}
+
+.after-effect {
+  @apply relative mb-8 text-[35px] font-bold dark:text-white font-roboto-slab;
+}
+
+.after-effect::after {
+  content: "";
+  @apply absolute top-1/2 -translate-y-1/2 h-[2px] w-[200px] bg-gradient-to-r from-[#FA5252] to-[#DD2476] ml-4;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fa5252;
+  border-radius: 20px;
+}
+
+/* Modal */
+.modal-container {
+  @apply fixed inset-0 z-[99999] bg-black/70 flex items-center justify-center p-4;
+}
+
+.modal-content {
+  @apply bg-white dark:bg-[#111111] rounded-[20px] max-w-[800px] w-full max-h-[90vh] overflow-y-auto p-8 relative;
+}
