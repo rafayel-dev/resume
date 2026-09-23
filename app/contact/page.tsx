@@ -3,33 +3,37 @@
 import { useState } from "react";
 
 export default function Contact() {
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus("Sending...");
+    setStatus("loading");
     try {
-      const response = await fetch("https://formspree.io/f/xoqrgaab", {
+      const data = new FormData();
+      data.append("name", formData.name);
+      data.append("email", formData.email);
+      data.append("message", formData.message);
+
+      const response = await fetch("https://formspree.io/f/xljdnwqa", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: data,
       });
       if (response.ok) {
-        setStatus("Message sent successfully!");
+        setStatus("success");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setStatus("Oops! Something went wrong.");
+        setStatus("error");
       }
-    } catch (error) {
-      setStatus("Error connecting to server.");
+    } catch {
+      setStatus("error");
     }
   };
 
@@ -46,7 +50,7 @@ export default function Contact() {
               Phone
             </h4>
             <p className="text-[#44566c] dark:text-[#A6A6A6] text-sm md:text-base">
-              +880 1751 876070
+              +880 1640 080338
             </p>
           </div>
         </div>
@@ -59,7 +63,7 @@ export default function Contact() {
               Email
             </h4>
             <p className="text-[#44566c] dark:text-[#A6A6A6] text-sm md:text-base">
-              rafiulislam665@gmail.com
+              rafayeldevs@gmail.com
             </p>
           </div>
         </div>
@@ -67,9 +71,9 @@ export default function Contact() {
 
       <div className="mt-12 p-8 md:p-12 rounded-2xl bg-[#F8FBFB] dark:bg-[#111111] border dark:border-[#212425]">
         <h3 className="text-3xl font-bold mb-8 dark:text-white">
-          I'm always open to discussing product{" "}
+          I&apos;m always open to discussing new{" "}
           <br className="hidden md:block" />
-          <span className="text-[#FA5252]">design work or partnerships.</span>
+          <span className="text-[#FA5252]">projects or partnerships.</span>
         </h3>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -109,12 +113,23 @@ export default function Contact() {
           ></textarea>
           <button
             type="submit"
-            className="dowanload-btn !inline-flex items-center"
+            disabled={status === "loading"}
+            className="download-btn !inline-flex items-center gap-2 cursor-pointer disabled:opacity-60"
           >
-            Submit Message
+            <span>{status === "loading" ? "Sending Message..." : "Submit Message"}</span>
+            <i className={`fa-solid ${status === "loading" ? "fa-spinner fa-spin" : "fa-paper-plane"} text-sm`}></i>
           </button>
-          {status && (
-            <p className="mt-4 font-medium dark:text-white">{status}</p>
+          {status === "success" && (
+            <div className="mt-4 p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 font-medium text-sm flex items-center gap-2">
+              <i className="fa-solid fa-circle-check text-base"></i>
+              <span>Thank you! Your message has been sent successfully. I will get back to you shortly.</span>
+            </div>
+          )}
+          {status === "error" && (
+            <div className="mt-4 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 font-medium text-sm flex items-center gap-2">
+              <i className="fa-solid fa-circle-exclamation text-base"></i>
+              <span>Oops! Something went wrong. Please try again or reach out directly at rafayeldevs@gmail.com</span>
+            </div>
           )}
         </form>
       </div>

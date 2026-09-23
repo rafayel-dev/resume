@@ -1,14 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Sidebar() {
   return (
     <div className="col-span-12 lg:col-span-4 h-fit lg:sticky lg:top-44">
       <div className="w-full mb-6 lg:mb-0 mx-auto relative bg-white text-center dark:bg-[#111111] px-6 rounded-[20px] mt-[100px] md:mt-[220px] lg:mt-0 shadow-sm border border-gray-100 dark:border-[#212425]">
         <Image
-          src="/images/about/avatar.jpg"
+          src="/images/about/rafiul-profile.jpg"
           width={240}
           height={240}
+          priority
           className="w-[200px] h-[200px] lg:w-[240px] lg:h-[240px] absolute left-[50%] transform -translate-x-[50%] drop-shadow-xl mx-auto rounded-[20px] -mt-[100px] lg:-mt-[140px] object-cover"
           alt="Portrait of Rafiul Islam"
         />
@@ -16,35 +16,45 @@ export default function Sidebar() {
           <h1 className="mt-6 mb-1 text-[26px] font-semibold dark:text-white">
             Rafiul Islam
           </h1>
-          <p className="mb-4 text-[#7B7B7B] inline-block dark:bg-[#1D1D1D] px-5 py-1.5 rounded-lg dark:text-[#A6A6A6]">
-            Fullstack & React Native Developer
+          <p className="mb-4 text-[#7B7B7B] inline-block dark:bg-[#1D1D1D] px-4 py-1.5 rounded-lg dark:text-[#A6A6A6] text-sm font-medium">
+            Executive Frontend & Mobile Engineer
           </p>
           <div className="flex justify-center space-x-3">
-            <a href="mailto:rafiulislam665@gmail.com" aria-label="Send email">
+            <a
+              href="https://github.com/rafayel-dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <span className="socialbtn text-[#181717] dark:text-white">
+                <i className="fa-brands fa-github"></i>
+              </span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/rafayel-dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <span className="socialbtn text-[#0072b1]">
+                <i className="fa-brands fa-linkedin-in"></i>
+              </span>
+            </a>
+            <a
+              href="https://wa.me/8801640080338"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <span className="socialbtn text-[#25D366]">
+                <i className="fa-brands fa-whatsapp"></i>
+              </span>
+            </a>
+            <a href="mailto:rafayeldevs@gmail.com" aria-label="Send email">
               <span className="socialbtn text-[#6AB5B9]">
                 <i className="fa-solid fa-envelope"></i>
               </span>
             </a>
-            <a href="tel:+8801751876070" aria-label="Call">
-              <span className="socialbtn text-[#E93B81]">
-                <i className="fa-solid fa-phone"></i>
-              </span>
-            </a>
-            <a
-              href="/CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open CV"
-            >
-              <span className="socialbtn text-[#FD7590]">
-                <i className="fa-solid fa-file-arrow-down"></i>
-              </span>
-            </a>
-            <Link href="/contact" aria-label="Contact">
-              <span className="socialbtn text-[#0072b1]">
-                <i className="fa-solid fa-paper-plane"></i>
-              </span>
-            </Link>
           </div>
 
           <div className="p-7 rounded-2xl mt-7 bg-[#F3F6F6] dark:bg-[#1D1D1D]">
@@ -58,9 +68,9 @@ export default function Sidebar() {
                 </p>
                 <a
                   className="dark:text-white hover:text-[#FA5252] transition-colors"
-                  href="tel:+8801751876070"
+                  href="tel:+8801640080338"
                 >
-                  +880 1751 876070
+                  +880 1640 080338
                 </a>
               </div>
             </div>
@@ -74,9 +84,9 @@ export default function Sidebar() {
                 </p>
                 <a
                   className="dark:text-white hover:text-[#FA5252] transition-colors"
-                  href="mailto:rafiulislam665@gmail.com"
+                  href="mailto:rafayeldevs@gmail.com"
                 >
-                  rafiulislam665@gmail.com
+                  rafayeldevs@gmail.com
                 </a>
               </div>
             </div>
@@ -88,7 +98,7 @@ export default function Sidebar() {
                 <p className="text-xs text-[#44566C] dark:text-[#A6A6A6]">
                   Location
                 </p>
-                <p className="dark:text-white">Pabna, Bangladesh</p>
+                <p className="dark:text-white">Dhaka, Bangladesh</p>
               </div>
             </div>
             <div className="flex py-2.5">
@@ -100,14 +110,14 @@ export default function Sidebar() {
                   Availability
                 </p>
                 <p className="dark:text-white">
-                  Available for freelance projects
+                  Available for Full-time & Freelance
                 </p>
               </div>
             </div>
           </div>
 
           <a
-            className="dowanload-btn inline-flex items-center justify-center mt-6"
+            className="download-btn inline-flex items-center justify-center mt-6"
             href="/CV.pdf"
             target="_blank"
             rel="noopener noreferrer"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Roboto_Slab } from "next/font/google";
 import "./globals.css";
+import "../public/assets/fontaswesome/css/all.min.css";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 
@@ -16,6 +17,7 @@ const robotoSlab = Roboto_Slab({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rafayel-dev.vercel.app"),
   title: "Rafiul Islam | Senior Fullstack & React Native Developer",
   description:
     "Senior Fullstack and React Native App developer building clean, responsive web and mobile applications with Next.js, Node.js, and MongoDB.",
@@ -32,13 +34,13 @@ export const metadata: Metadata = {
     title: "Rafiul Islam | Senior Fullstack & React Native Developer",
     description:
       "Senior Fullstack and React Native App developer building responsive web and mobile apps.",
-    url: "https://rafiulislam.dev", // User can change this later
+    url: "https://rafayel-dev.vercel.app",
     siteName: "Rafiul Islam Portfolio",
     images: [
       {
-        url: "/images/about/avatar.jpg",
-        width: 800,
-        height: 800,
+        url: "/images/about/rafiul-profile.jpg",
+        width: 900,
+        height: 900,
         alt: "Rafiul Islam",
       },
     ],
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rafiul Islam | Senior Fullstack & React Native Developer",
     description: "Senior Fullstack and React Native App developer.",
-    images: ["/images/about/avatar.jpg"],
+    images: ["/images/about/rafiul-profile.jpg"],
   },
   icons: {
     icon: "/images/logo/f.jpg",
@@ -64,11 +66,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="stylesheet" href="/assets/fontaswesome/css/all.min.css" />
-        <link
-          rel="stylesheet"
-          href="/assets/fontaswesome/css/fontawesome.min.css"
-        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
-import Image from "next/image";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -16,19 +15,15 @@ export default function Navbar() {
     { name: "Works", path: "/works", icon: "fas fa-briefcase" },
     { name: "Contact", path: "/contact", icon: "fa-solid fa-address-book" },
   ];
-//for commit
+
   return (
     <>
       {/* Mobile Top Header */}
-      <header className="flex justify-between items-center fixed top-0 left-0 w-full z-[999] bg-[#F3F6F6] dark:bg-black px-4 md:px-10 py-5 lg:hidden">
-        <Link href="/">
-          <Image
-            src="/images/logo/logo.png"
-            width={150}
-            height={40}
-            alt="Logo"
-            className="h-10 w-auto"
-          />
+      <header className="flex justify-between items-center fixed top-0 left-0 w-full z-[999] bg-[#F3F6F6] dark:bg-black px-4 md:px-10 py-4 lg:hidden border-b border-gray-200/60 dark:border-[#212425]">
+        <Link href="/" className="inline-block">
+          <span className="text-2xl font-bold font-roboto-slab dark:text-white tracking-tight">
+            Rafiul<span className="text-[#FA5252]">.</span>
+          </span>
         </Link>
         <div className="flex items-center space-x-3">
           <ThemeToggle />
@@ -48,7 +43,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       <nav
-        className={`${isOpen ? "block" : "hidden"} fixed top-[88px] left-0 w-full z-[998] bg-white dark:bg-[#111111] lg:hidden shadow-xl border-t border-gray-100 dark:border-[#212425]`}
+        className={`${isOpen ? "block" : "hidden"} fixed top-[72px] left-0 w-full z-[998] bg-white dark:bg-[#111111] lg:hidden shadow-xl border-t border-gray-100 dark:border-[#212425]`}
       >
         <ul className="flex flex-col py-4 px-6 md:px-10 space-y-2">
           {menuItems.map((item) => {
@@ -88,7 +83,7 @@ export default function Navbar() {
                       href={item.path}
                       className={`flex flex-col items-center justify-center w-[80px] h-[80px] rounded-[10px] transition-all duration-300 ${
                         isActive
-                          ? "bg-gradient-to-r from-[#FA5252] to-[#DD2476] text-white"
+                          ? "bg-gradient-to-r from-[#FA5252] to-[#DD2476] text-white shadow-md shadow-[#FA5252]/20"
                           : "bg-[#F3F6F6] dark:bg-[#212425] text-[#44566C] dark:text-[#A6A6A6] hover:bg-gradient-to-r hover:from-[#FA5252] hover:to-[#DD2476] hover:text-white"
                       }`}
                     >

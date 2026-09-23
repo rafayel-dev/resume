@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: var(--font-outfit);
   --font-outfit: var(--font-outfit);
@@ -38,14 +40,9 @@
   @apply w-[44px] h-[44px] flex items-center justify-center rounded-[10px] transition-all duration-300 bg-[#F3F6F6] dark:bg-[#212425] hover:bg-gradient-to-r hover:from-[#FA5252] hover:to-[#DD2476] hover:text-white;
 }
 
+.download-btn,
 .dowanload-btn {
   @apply py-3 px-8 rounded-[35px] text-white bg-gradient-to-r from-[#FA5252] to-[#DD2476] transition-all duration-300 hover:bg-gradient-to-l;
-}
-
-.stack-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .site-page-header {
@@ -56,17 +53,13 @@
   @apply flex items-center gap-6;
 }
 
-.about-box {
-  @apply p-6 rounded-[20px] border border-gray-100 dark:border-[#212425] flex gap-4 transition-all duration-300 hover:shadow-md;
-}
-
 .after-effect {
-  @apply relative mb-8 text-[35px] font-bold dark:text-white font-roboto-slab;
+  @apply relative mb-8 text-[35px] font-bold dark:text-white font-roboto-slab inline-flex items-center;
 }
 
 .after-effect::after {
   content: "";
-  @apply absolute top-1/2 -translate-y-1/2 h-[2px] w-[200px] bg-gradient-to-r from-[#FA5252] to-[#DD2476] ml-4;
+  @apply block h-[2px] w-[80px] sm:w-[140px] md:w-[200px] bg-gradient-to-r from-[#FA5252] to-[#DD2476] ml-4;
 }
 
 /* Scrollbar */
@@ -83,11 +76,38 @@
   border-radius: 20px;
 }
 
-/* Modal */
-.modal-container {
-  @apply fixed inset-0 z-[99999] bg-black/70 flex items-center justify-center p-4;
+/* Fail-safe Dark Mode Rules across all environments */
+.dark main {
+  background-color: #111111;
+  border-color: #212425;
 }
 
-.modal-content {
-  @apply bg-white dark:bg-[#111111] rounded-[20px] max-w-[800px] w-full max-h-[90vh] overflow-y-auto p-8 relative;
+.dark .site-page-header {
+  background-color: #111111;
+  border-color: #212425;
 }
+
+.dark [class*="dark:bg-[#111111]"] {
+  background-color: #111111;
+}
+
+.dark [class*="dark:bg-[#1D1D1D]"] {
+  background-color: #1D1D1D;
+}
+
+.dark [class*="dark:bg-[#212425]"] {
+  background-color: #212425;
+}
+
+.dark [class*="dark:border-[#212425]"] {
+  border-color: #212425;
+}
+
+.dark [class*="dark:text-white"] {
+  color: #ffffff;
+}
+
+.dark [class*="dark:text-[#A6A6A6]"] {
+  color: #A6A6A6;
+}
+
