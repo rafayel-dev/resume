@@ -16,7 +16,7 @@ export default function Navbar() {
     { name: "Works", path: "/works", icon: "fas fa-briefcase" },
     { name: "Contact", path: "/contact", icon: "fa-solid fa-address-book" },
   ];
-
+//for commit
   return (
     <>
       {/* Mobile Top Header */}
