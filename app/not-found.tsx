@@ -16,7 +16,7 @@ export default function NotFound() {
 
       <Link
         href="/"
-        className="download-btn !inline-flex items-center space-x-2"
+        className="download-btn inline-flex! items-center space-x-2"
       >
         <span>Back to Home</span>
         <i className="fa-solid fa-house ml-2"></i>
