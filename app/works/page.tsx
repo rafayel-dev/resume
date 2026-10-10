@@ -3,7 +3,44 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const projects = [
+type Project = {
+  id: number;
+  title: string;
+  category: string;
+  image: string;
+  /** Set for wide covers that must not be cropped: shows the whole image on this background. */
+  imageBg?: string;
+  link: string;
+  linkLabel?: string;
+  description: string;
+  tech: string[];
+};
+
+const projects: Project[] = [
+  {
+    id: 9,
+    title: "AI Sales Desk — Omnichannel AI Inbox",
+    category: "SaaS & Apps",
+    image: "/images/work/ai-sales-desk.webp",
+    imageBg: "#F9FAFB",
+    link: "https://devskitchen.dev.cv/work/ai-sales-desk",
+    linkLabel: "Case Study",
+    description:
+      "One inbox for website chat, Messenger, Instagram and WhatsApp, with an AI assistant that answers from each shop’s own catalog, checks stock and drafts orders. Built at DEVS KITCHEN.",
+    tech: ["Next.js", "NestJS", "PostgreSQL", "pgvector", "Redis", "Socket.IO"],
+  },
+  {
+    id: 10,
+    title: "BooPaw — Pet Safety & Lost/Found App",
+    category: "SaaS & Apps",
+    image: "/images/work/boopaw.webp",
+    imageBg: "linear-gradient(90deg, #fff4f6, #fcd0db)",
+    link: "https://devskitchen.dev.cv/work/boopaw",
+    linkLabel: "Case Study",
+    description:
+      "A digital pet ID and lost-and-found network for Android and iOS. QR collar tags let anyone who finds a pet reach the owner, no app needed. Built at DEVS KITCHEN.",
+    tech: ["React Native", "Expo", "TypeScript", "Node.js", "MongoDB"],
+  },
   {
     id: 1,
     title: "WeMama — Motherhood Community App",
@@ -133,13 +170,14 @@ export default function Works() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block overflow-hidden rounded-xl mb-4 relative aspect-video bg-gray-200 dark:bg-black/50"
+                style={project.imageBg ? { background: project.imageBg } : undefined}
               >
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className={`${project.imageBg ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-105`}
                 />
               </a>
               <div className="flex items-center justify-between mb-2">
@@ -151,9 +189,9 @@ export default function Works() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#FA5252]/10 text-[#FA5252] hover:bg-gradient-to-r hover:from-[#FA5252] hover:to-[#DD2476] hover:text-white transition-all shadow-xs"
-                  aria-label={`Visit live website for ${project.title}`}
+                  aria-label={`${project.linkLabel ?? "Visit live website"} for ${project.title}`}
                 >
-                  <span>Live Demo</span>
+                  <span>{project.linkLabel ?? "Live Demo"}</span>
                   <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </a>
               </div>
