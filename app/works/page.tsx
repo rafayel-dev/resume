@@ -18,6 +18,17 @@ type Project = {
 
 const projects: Project[] = [
   {
+    id: 11,
+    title: "Office ERP — HR & Workforce Management",
+    category: "SaaS & Apps",
+    image: "/images/work/office-erp.webp",
+    link: "https://devskitchen.dev.cv/work/office-erp",
+    linkLabel: "Case Study",
+    description:
+      "An HR and office ERP for attendance, leave, payroll, expenses and projects. Geofenced check-in, manager-to-HR approval chains and six role-based access levels across thirteen modules. Built at DEVS KITCHEN.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "shadcn/ui", "TanStack Table"],
+  },
+  {
     id: 9,
     title: "AI Sales Desk — Omnichannel AI Inbox",
     category: "SaaS & Apps",
