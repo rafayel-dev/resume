@@ -23,7 +23,7 @@ type Localised = { es: string; en: string };
 
 type Project = ProjectDetail & {
   align: "left" | "right";
-  section: "project1" | "project2" | "project3" | "project4";
+  section: "project1" | "project2" | "project3" | "project4" | "project5";
 };
 
 const projects: Project[] = [
@@ -146,6 +146,36 @@ const projects: Project[] = [
     badge: { es: "Live Platform", en: "Live Platform" },
     align: "right",
     section: "project4",
+  },
+  {
+    num: "05",
+    name: {
+      es: "bestKid EU — Moda Infantil Europea",
+      en: "bestKid EU — European Kids Fashion",
+    },
+    stack: [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "TypeScript",
+      "Headless Commerce",
+    ],
+    desc: {
+      es: "Tienda online internacional de moda infantil europea con gestión multidivisa, filtros dinámicos y pasarelas de pago seguras.",
+      en: "International European children's fashion e-commerce storefront with multi-currency handling and dynamic product filters.",
+    },
+    details: {
+      es: "Plataforma de comercio electrónico internacional para moda infantil europea. Desarrollada con Next.js y arquitectura headless commerce, con filtros facetados en tiempo real, manejo multidivisa, sincronización de stock y un flujo de checkout de alta conversión.",
+      en: "An international e-commerce platform dedicated to premium European children's clothing. Built with Next.js and headless commerce architecture, featuring dynamic faceted product filtering, multi-currency localization, real-time inventory checks, and an ultra-fast checkout funnel.",
+    },
+    url: "https://bestkid.eu/",
+    media: [
+      "/projects/bestkid/cover.png",
+    ],
+    highlights: ["nextdotjs", "react", "typescript", "tailwindcss"],
+    badge: { es: "E-Commerce", en: "E-Commerce" },
+    align: "left",
+    section: "project5",
   },
 ];
 
@@ -656,13 +686,6 @@ export default function Home() {
                     </svg>
                     {t("contact.copyEmail")}
                   </CopyEmail>
-                  <a
-                    href={`mailto:${EMAIL}`}
-                    data-cursor="hover"
-                    className="frost-btn"
-                  >
-                    {t("contact.openMail")}
-                  </a>
                   <a
                     href="https://github.com/rafayel-dev"
                     target="_blank"
