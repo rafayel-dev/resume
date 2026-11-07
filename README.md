@@ -52,3 +52,4 @@ An award-worthy interactive 3D portfolio featuring a fully modeled mechanical ke
   npm run dev
   ```
   Open [http://localhost:3000](http://localhost:3000).
+
