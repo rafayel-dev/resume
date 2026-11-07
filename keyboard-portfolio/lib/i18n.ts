@@ -1,175 +1,149 @@
-// Minimal i18n layer: a single dictionary keyed by dot-path, with each leaf
-// carrying both the ES and EN copy. Consumers read via `useLanguage().t()`
-// which resolves the path for the active language. Keeping it flat and
-// co-located (rather than adding a dependency like next-intl) keeps the
-// project tiny and makes the strings easy to audit.
-export type Lang = "es" | "en";
+// Minimal i18n layer: single dictionary with English copy.
+// Consumers read via `useLanguage().t()`
+export type Lang = "en";
 
-export const LANGUAGES: Lang[] = ["es", "en"];
-export const DEFAULT_LANG: Lang = "es";
+export const LANGUAGES: Lang[] = ["en"];
+export const DEFAULT_LANG: Lang = "en";
 
-type Leaf = Record<Lang, string>;
+type Leaf = { en: string; es?: string } | string;
 type Node = Leaf | { [key: string]: Node };
 
 function isLeaf(node: Node): node is Leaf {
-  return typeof (node as Leaf).es === "string";
+  if (typeof node === "string") return true;
+  return typeof (node as { en?: string }).en === "string";
 }
 
 export const DICT = {
   picker: {
-    season: { es: "Estación", en: "Season" },
-    language: { es: "Idioma", en: "Language" },
+    season: { en: "Season" },
+    language: { en: "Language" },
   },
   seasons: {
-    spring: { es: "Primavera", en: "Spring" },
-    summer: { es: "Verano", en: "Summer" },
-    autumn: { es: "Otoño", en: "Autumn" },
-    winter: { es: "Invierno", en: "Winter" },
+    spring: { en: "Spring" },
+    summer: { en: "Summer" },
+    autumn: { en: "Autumn" },
+    winter: { en: "Winter" },
   },
   nav: {
-    aria: { es: "Secciones", en: "Sections" },
-    home: { es: "Inicio", en: "Home" },
-    stack: { es: "Stack", en: "Stack" },
-    experience: { es: "Experiencia", en: "Experience" },
-    project: { es: "Proyecto", en: "Project" },
-    contact: { es: "Contacto", en: "Contact" },
+    aria: { en: "Sections" },
+    home: { en: "Home" },
+    stack: { en: "Stack" },
+    experience: { en: "Experience" },
+    project: { en: "Projects" },
+    contact: { en: "Contact" },
   },
   header: {
     availability: {
-      es: "Open to opportunities",
-      en: "Open to opportunities",
+      en: "Available for Full-time & Freelance",
     },
   },
   hero: {
-    greeting: { es: "Hola, soy", en: "Hi, I am" },
+    greeting: { en: "Hi, I am" },
     roleLine: {
-      es: "Software Engineer & Tech Lead.",
-      en: "Software Engineer & Tech Lead.",
+      en: "Executive Frontend & Mobile Engineer.",
     },
     tagline: {
-      es: "Especializado en ERPs y aplicaciones full-stack para empresas.",
-      en: "Specialised in ERPs and full-stack apps for businesses.",
+      en: "Specialised in Next.js 16, React Native & scalable full-stack web and mobile apps.",
     },
-    cv: { es: "Descargar CV", en: "Download CV" },
-    hire: { es: "Contactarme", en: "Contact me" },
-    scroll: { es: "Scroll para explorar", en: "Scroll to explore" },
+    cv: { en: "Download CV" },
+    hire: { en: "Contact me" },
+    scroll: { en: "Scroll to explore" },
     keysHint: {
-      es: "· hover sobre las teclas",
       en: "· hover over the keys",
     },
   },
   stack: {
-    title: { es: "Tech Stack", en: "Tech Stack" },
+    title: { en: "Tech Stack" },
     hint: {
-      es: "(hint: pasa el ratón por una tecla)",
       en: "(hint: hover over a key)",
     },
     hintMobile: {
-      es: "Las herramientas con las que construyo.",
       en: "The tools I build with.",
     },
   },
   experience: {
-    title: { es: "Experience", en: "Experience" },
+    title: { en: "Experience" },
     subtitle: {
-      es: "Mi trayectoria profesional.",
-      en: "My professional journey.",
+      en: "My professional journey & engineering leadership.",
     },
   },
   projects: {
-    kicker: { es: "proyecto", en: "project" },
-    viewMore: { es: "Ver más", en: "View more" },
-    openSite: { es: "Abrir sitio", en: "Visit site" },
-    viewCode: { es: "Ver código", en: "View code" },
-    close: { es: "Cerrar", en: "Close" },
-    stackLabel: { es: "Stack", en: "Stack" },
-    overview: { es: "Resumen", en: "Overview" },
+    kicker: { en: "featured project" },
+    viewMore: { en: "View details" },
+    openSite: { en: "Visit site" },
+    viewCode: { en: "View code" },
+    close: { en: "Close" },
+    stackLabel: { en: "Stack" },
+    overview: { en: "Overview" },
   },
   contact: {
-    kicker: { es: "contacto", en: "contact" },
-    title: { es: "¿Hablamos?", en: "Let's talk?" },
+    kicker: { en: "contact" },
+    title: { en: "Let's connect!" },
     body: {
-      es: "Si lo que has visto te interesa, el teclado ya está listo para recibir el primer mensaje.",
-      en: "If what you've seen interests you, the keyboard is ready for the first message.",
+      en: "Whether you have a new project, a freelance contract, or an exciting full-time role, the keyboard is ready for your message.",
     },
-    copyEmail: { es: "Copiar email", en: "Copy email" },
-    openMail: { es: "Abrir mail", en: "Open mailto" },
-    github: { es: "GitHub", en: "GitHub" },
-    linkedin: { es: "LinkedIn", en: "LinkedIn" },
-    emailToast: { es: "Email copiado", en: "Email copied" },
+    copyEmail: { en: "Copy email" },
+    openMail: { en: "Send email" },
+    github: { en: "GitHub" },
+    linkedin: { en: "LinkedIn" },
+    emailToast: { en: "Email copied to clipboard" },
     footer: {
-      es: "© 2026 Txema Albero. Todos los derechos reservados.",
-      en: "© 2026 Txema Albero. All rights reserved.",
+      en: "© 2026 Rafiul Islam. All rights reserved.",
     },
   },
   keyboard: {
     taglines: {
       javascript: {
-        es: "Donde empezó todo. Sigue aquí, sigue mandando.",
-        en: "Where it all started. Still here, still in charge.",
+        en: "The core engine of modern web development.",
       },
       typescript: {
-        es: "Mismo JS, con cinturón de seguridad.",
-        en: "Same JS, with a seatbelt.",
+        en: "Same JavaScript, with type-safety and robust scalability.",
       },
       html5: {
-        es: "Los huesos de cualquier página.",
-        en: "The bones of any page.",
+        en: "Semantic and accessible structural foundation.",
       },
       css: {
-        es: "El detalle que separa lo bueno de lo bonito.",
-        en: "What separates good from beautiful.",
+        en: "Modern, responsive, and pixel-perfect design.",
       },
       tailwindcss: {
-        es: "Utility-first. Diseño en el HTML.",
-        en: "Utility-first. Design inside the HTML.",
-      },
-      python: {
-        es: "Se lee como inglés, escala como cohete.",
-        en: "Reads like English, scales like a rocket.",
+        en: "Tailwind CSS v4: high-performance utility-first styling.",
       },
       react: {
-        es: "Componentes, componentes, componentes.",
-        en: "Components, components, components.",
+        en: "Modern component-driven architecture with React 19.",
       },
       nextdotjs: {
-        es: "React adulto: routing, SSR, edge.",
-        en: "React all grown up: routing, SSR, edge.",
+        en: "Next.js 16: App Router, Server Actions, SSR & Edge delivery.",
       },
-      vuedotjs: {
-        es: "El frontend más relajado.",
-        en: "The most relaxed frontend.",
+      expo: {
+        en: "Fluid cross-platform mobile apps for iOS and Android.",
       },
       nodedotjs: {
-        es: "JavaScript en el servidor.",
-        en: "JavaScript on the server.",
+        en: "High-throughput asynchronous backend runtime.",
       },
-      php: {
-        es: "Mueve más web de la que crees.",
-        en: "Runs more of the web than you think.",
+      express: {
+        en: "Lightweight and robust RESTful API web framework.",
       },
-      odoo: {
-        es: "ERP que no hace llorar.",
-        en: "ERP that doesn't make you cry.",
+      redux: {
+        en: "Predictable global state management & caching with RTK Query.",
+      },
+      mongodb: {
+        en: "Flexible, document-oriented NoSQL database for rapid growth.",
       },
       postgresql: {
-        es: "La base de datos aburrida que siempre funciona.",
-        en: "The boring database that always works.",
+        en: "Rock-solid relational database with ACID compliance.",
       },
       docker: {
-        es: "Igual en mi máquina, igual en producción.",
-        en: "Same on my machine, same in production.",
+        en: "Consistent application containerization and deployment.",
       },
       git: {
-        es: "Historia y máquina del tiempo del código.",
-        en: "History and a time machine for your code.",
+        en: "Version control, team branching workflows, and automation.",
       },
     },
   },
 } as const satisfies Record<string, Node>;
 
-// Resolve a dotted path in the dictionary for a given language.
-export function translate(path: string, lang: Lang): string {
+// Resolve a dotted path in the dictionary for English
+export function translate(path: string, _lang?: string): string {
   const parts = path.split(".");
   let ref: Node = DICT as unknown as Node;
   for (const p of parts) {
@@ -177,6 +151,7 @@ export function translate(path: string, lang: Lang): string {
     ref = (ref as { [key: string]: Node })[p];
     if (ref === undefined) return path;
   }
-  if (isLeaf(ref)) return ref[lang] ?? ref.es ?? path;
+  if (typeof ref === "string") return ref;
+  if (isLeaf(ref)) return (ref as { en: string }).en ?? path;
   return path;
 }

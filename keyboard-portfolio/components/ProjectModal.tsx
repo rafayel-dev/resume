@@ -32,8 +32,11 @@ type Props = {
   onClose: () => void;
 };
 
-function pick<T>(loc: { es: T; en: T }, lang: Lang): T {
-  return loc[lang];
+function pick<T>(loc: { en: T } | T, _lang?: string): T {
+  if (typeof loc === "object" && loc !== null && "en" in loc) {
+    return (loc as { en: T }).en;
+  }
+  return loc as T;
 }
 
 // Fullscreen modal that details a project. Closes on ESC, click outside,

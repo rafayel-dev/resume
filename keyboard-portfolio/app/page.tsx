@@ -7,16 +7,14 @@ import Reveal from "@/components/Reveal";
 import SectionNav from "@/components/SectionNav";
 import CopyEmail from "@/components/CopyEmail";
 import SeasonPicker from "@/components/SeasonPicker";
-import LanguagePicker from "@/components/LanguagePicker";
 import ProjectModal, {
   type ProjectDetail,
 } from "@/components/ProjectModal";
 import { useLanguage } from "@/components/LanguageProvider";
 import { useIsMobile } from "@/lib/useIsMobile";
 import { SKILLS_FLAT } from "@/lib/skills";
-import type { Lang } from "@/lib/i18n";
 
-const EMAIL = "josemariaalberobelamendia@gmail.com";
+const EMAIL = "rafayeldevs@gmail.com";
 
 // Localised content lives in `{ es, en }` objects inside these arrays so the
 // page can be a straightforward array.map() at render time. Tech names stay
@@ -32,145 +30,120 @@ const projects: Project[] = [
   {
     num: "01",
     name: {
-      es: "Contestador IA de Reseñas Google",
-      en: "AI Responder for Google Reviews",
+      es: "Office ERP — Gestión de RRHH y Operaciones",
+      en: "Office ERP — HR & Workforce Management",
     },
     stack: [
       "Next.js",
-      "FastAPI",
-      "Python",
-      "PostgreSQL",
-      "Supabase",
-      "Claude API",
-      "Stripe",
-      "Celery",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "TanStack Table",
     ],
     desc: {
-      es: "SaaS que genera respuestas personalizadas a reseñas de Google Business Profile con IA, manteniendo el tono de la marca.",
-      en: "SaaS that generates personalised replies to Google Business Profile reviews with AI while keeping the brand tone.",
+      es: "ERP integral para asistencia, permisos, nóminas, gastos y proyectos con control geolocalizado y 6 niveles de permisos.",
+      en: "Enterprise HR and office ERP for attendance, leave, payroll, expenses, and projects with geofenced check-in and 6 role-based levels.",
     },
     details: {
-      es: "Plataforma orientada a negocios locales en España para gestionar sus reseñas de Google Business Profile. El sistema hace polling cada 15 minutos, llama a Claude para generar respuestas alineadas con el tono de marca y las publica automáticamente (o las manda a revisión). Incluye Stripe con suscripciones y Customer Portal, autenticación con Google OAuth + PKCE, alertas por email/SMS para reseñas negativas y un dashboard con métricas.",
-      en: "A platform for local businesses in Spain to manage their Google Business Profile reviews. The system polls every 15 minutes, uses Claude to draft replies in the brand's tone and publishes them automatically (or sends them to review). Stripe handles subscriptions and Customer Portal, auth is Google OAuth with PKCE, and negative reviews fire email/SMS alerts. Dashboard with metrics included.",
+      es: "Desarrollado en DEVS KITCHEN. Sistema ERP empresarial de recursos humanos y gestión de empleados a través de 13 módulos integrados. Incluye fichaje geolocalizado, cadenas de aprobación jerárquicas de mánager a RRHH, motor de cálculo de nóminas y tablas interactivas con TanStack Table y Tailwind CSS.",
+      en: "Built at DEVS KITCHEN. An enterprise HR and office ERP for attendance, leave, payroll, expenses and projects. Features geofenced check-in, manager-to-HR approval chains, and six role-based access levels across 13 modules, powered by TanStack Table and modern Next.js architecture.",
     },
-    url: "https://revio.txemaalbero.com/",
+    url: "https://devskitchen.dev.cv/work/office-erp",
     media: [
-      "/projects/revio/landing.png",
-      "/projects/revio/dashboard.png",
-      "/projects/revio/alertas.png",
-      "/projects/revio/analiticas.png",
-      "/projects/revio/negocios.png",
-      "/projects/revio/analiticas-ia.png",
+      "/projects/office-erp/cover.webp",
     ],
-    highlights: ["nextdotjs", "tailwindcss", "python", "postgresql"],
+    highlights: ["nextdotjs", "react", "typescript", "tailwindcss"],
     align: "left",
     section: "project1",
   },
   {
     num: "02",
     name: {
-      es: "Control de Temperaturas APPCC",
-      en: "HACCP Temperature Control",
+      es: "BooPaw — Red de Seguridad y Mascotas Perdidas",
+      en: "BooPaw — Pet Safety & Lost/Found App",
     },
     stack: [
-      "Next.js 16",
-      "FastAPI",
-      "Python",
-      "PostgreSQL",
-      "Supabase",
-      "Claude API",
-      "Stripe",
-      "Celery",
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Node.js",
+      "MongoDB",
     ],
     desc: {
-      es: "App para restaurantes que digitaliza el registro de temperaturas APPCC y genera planes e informes automáticos para inspecciones sanitarias.",
-      en: "App for restaurants that digitises HACCP temperature logs and auto-generates plans and reports for food safety inspections.",
+      es: "App móvil para Android e iOS con identificación digital y collares con código QR para conectar mascotas con sus dueños.",
+      en: "A cross-platform digital pet ID and lost-and-found mobile network for Android & iOS with QR collar tags.",
     },
     details: {
-      es: "Digitaliza el control APPCC completo de un restaurante: registros de temperatura, trazabilidad, alérgenos y generación asistida por IA de los planes HACCP. Integración con Open Food Facts para importar alérgenos, MFA en la autenticación, multi-idioma con next-intl y pagos por suscripción con Stripe. Backend 100% async con FastAPI + SQLAlchemy y tareas en Celery.",
-      en: "Full HACCP digitisation for a restaurant: temperature logs, traceability, allergens, and AI-assisted generation of HACCP plans. Integrates with Open Food Facts for allergens, MFA-protected auth, i18n with next-intl, subscription billing with Stripe. Fully async backend with FastAPI + SQLAlchemy and Celery workers.",
+      es: "Desarrollado en DEVS KITCHEN. BooPaw conecta a dueños de mascotas mediante perfiles digitales y códigos QR en collares. Al escanear la placa desde cualquier navegador móvil, quien encuentre a la mascota puede contactar al dueño al instante sin necesidad de instalar la app. Desarrollado con React Native, Expo, Node.js y MongoDB.",
+      en: "Built at DEVS KITCHEN. A digital pet ID and lost-and-found network for Android and iOS. QR collar tags allow anyone who finds a pet to reach the owner instantly through a responsive web profile, no app installation required. Engineered with React Native, Expo, Node.js, and MongoDB.",
     },
-    url: "https://aptia.txemaalbero.com/",
+    url: "https://devskitchen.dev.cv/work/boopaw",
     media: [
-      "/projects/aptia/landing.png",
-      "/projects/aptia/panel.png",
-      "/projects/aptia/registros.png",
-      "/projects/aptia/carta-alergenos.png",
-      "/projects/aptia/inspeccion.png",
-      "/projects/aptia/cuestionario.png",
+      "/projects/boopaw/cover.webp",
     ],
-    highlights: ["nextdotjs", "tailwindcss", "python", "postgresql", "typescript"],
-    badge: { es: "En desarrollo", en: "In progress" },
+    highlights: ["react", "expo", "typescript", "nodedotjs", "mongodb"],
+    badge: { es: "Mobile App", en: "Mobile App" },
     align: "right",
     section: "project2",
   },
   {
     num: "03",
     name: {
-      es: "Gestor de Finanzas Personales",
-      en: "Personal Finance Tracker",
+      es: "AI Sales Desk — Bandeja Omnicanal con IA",
+      en: "AI Sales Desk — Omnichannel AI Inbox",
     },
     stack: [
-      "Django",
-      "Python",
-      "SQLite",
-      "HTML5",
-      "CSS3",
-      "JavaScript",
-      "Chart.js",
-      "pandas",
+      "Next.js",
+      "NestJS",
+      "PostgreSQL",
+      "pgvector",
+      "Redis",
+      "Socket.IO",
     ],
     desc: {
-      es: "Dashboard para seguimiento de ingresos, gastos y objetivos de ahorro con visualizaciones gráficas, importación desde Excel e informes mensuales.",
-      en: "Dashboard to track income, expenses and savings goals with visual charts, Excel import and monthly reports.",
+      es: "Bandeja de entrada omnicanal para web, Messenger, Instagram y WhatsApp con asistente IA de ventas en tiempo real.",
+      en: "One unified inbox for website chat, Messenger, Instagram, and WhatsApp, with an AI assistant that answers from catalog data.",
     },
     details: {
-      es: "Aplicación Django clásica (MVT) para finanzas personales: categorización de gastos, objetivos de ahorro, importación masiva desde Excel (xlsx/xls) y gráficos con Chart.js. Temas claro/oscuro hechos con CSS puro y sin dependencias frontend. Un proyecto que prioriza simplicidad y robustez: sin frameworks en el cliente, autenticación nativa de Django, base de datos SQLite.",
-      en: "Classic Django (MVT) app for personal finance: expense categorisation, savings goals, bulk import from Excel (xlsx/xls) and Chart.js-powered graphs. Light/dark themes in pure CSS with zero frontend dependencies. A project that favours simplicity and robustness: no client framework, Django's built-in auth, SQLite storage.",
+      es: "Desarrollado en DEVS KITCHEN. Plataforma centralizada que unifica conversaciones de clientes en webchat, Messenger, Instagram y WhatsApp. Utiliza búsqueda vectorial con pgvector para que la IA responda basándose en el catálogo de productos de cada tienda, verificando stock y preparando pedidos automáticamente en tiempo real.",
+      en: "Built at DEVS KITCHEN. A unified inbox combining website chat, Messenger, Instagram, and WhatsApp into one live interface. Integrates an AI assistant grounded in each shop's catalog using pgvector, checking inventory live and drafting customer orders via Socket.IO and NestJS.",
     },
-    github: "https://github.com/Txemalon/Gestor-de-gastos-personales",
+    url: "https://devskitchen.dev.cv/work/ai-sales-desk",
     media: [
-      "/projects/gestor-gastos/dashboard.png",
-      "/projects/gestor-gastos/wallets.png",
-      "/projects/gestor-gastos/transacciones.png",
-      "/projects/gestor-gastos/categorias.png",
-      "/projects/gestor-gastos/reportes.png",
-      "/projects/gestor-gastos/inversiones.png",
+      "/projects/ai-sales-desk/cover.webp",
     ],
-    highlights: ["python", "javascript", "html5", "css"],
+    highlights: ["nextdotjs", "postgresql", "typescript", "nodedotjs"],
     align: "left",
     section: "project3",
   },
   {
     num: "04",
     name: {
-      es: "Tienda online de dianas",
-      en: "Dartboards e-commerce",
+      es: "WeMama — Comunidad y Red Maternal",
+      en: "WeMama — Motherhood Community Platform",
     },
     stack: [
-      "Next.js 15",
       "React",
-      "TypeScript",
-      "Prisma",
-      "PostgreSQL",
-      "NextAuth",
-      "Stripe",
-      "Framer Motion",
+      "Remix",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "REST APIs",
     ],
     desc: {
-      es: "E-commerce moderno para venta de dianas con pagos integrados, autenticación social, panel de administración y animaciones fluidas.",
-      en: "Modern e-commerce for dartboards with integrated payments, social auth, an admin panel and smooth animations.",
+      es: "Plataforma comunitaria verificada para mujeres en todas las etapas de la maternidad con grupos temáticos y sesiones de expertos.",
+      en: "Verified women-only community web and mobile platform supporting women across all stages of motherhood.",
     },
     details: {
-      es: "Tienda online completa con catálogo, carrito y checkout con Stripe. NextAuth con Google OAuth y credenciales, rate limiting con Upstash Redis, validación con Zod y un panel de administración separado (AdminJS sobre Express, puerto 3001). Transiciones y microinteracciones con Framer Motion para darle un acabado más premium que una tienda al uso.",
-      en: "A full e-commerce with catalogue, cart and Stripe checkout. NextAuth with Google OAuth and credentials, Upstash Redis for rate limiting, Zod validation, and a separate admin panel (AdminJS on Express, port 3001). Framer Motion powers transitions and micro-interactions for a more premium feel than a typical shop.",
+      es: "Espacio seguro y verificado para madres durante el embarazo y la crianza. Incluye verificación de identidad, foros dinámicos segmentados por etapas, mensajería en tiempo real, sesiones de preguntas en vivo con especialistas y seguimiento de bienestar. Desarrollado con React, Remix y Redux Toolkit.",
+      en: "A verified women-only community web and mobile platform supporting women across all stages of motherhood with stage-based groups, expert Q&A sessions, peer support forums, and scalable state management built with React, Remix, and Redux Toolkit.",
     },
+    url: "https://www.wemama.app/",
     media: [
-      "/projects/dianas/packs.png",
-      "/projects/dianas/catalogo.png",
+      "/projects/wemama/cover.jpg",
     ],
-    highlights: ["nextdotjs", "react", "typescript", "tailwindcss", "postgresql"],
-    badge: { es: "En construcción", en: "Under construction" },
+    highlights: ["react", "redux", "tailwindcss", "javascript"],
+    badge: { es: "Live Platform", en: "Live Platform" },
     align: "right",
     section: "project4",
   },
@@ -186,38 +159,53 @@ const experiences: Array<{
   stack: string[];
 }> = [
   {
-    role: { es: "Tech Lead", en: "Tech Lead" },
-    company: "Activalink",
+    role: {
+      es: "Executive Frontend & Mobile Engineer",
+      en: "Executive Frontend & Mobile Engineer",
+    },
+    company: "Sparktech Agency",
     period: { es: "2023 — Presente", en: "2023 — Present" },
-    location: { es: "Alcoy, España", en: "Alcoy, Spain" },
+    location: { es: "Dhaka, Bangladesh", en: "Dhaka, Bangladesh" },
     summary: {
-      es: "Activalink implementa y adapta ERPs para pymes y grandes empresas. Desarrollo módulos y personalizaciones custom sobre Odoo, integraciones a medida y proyectos de implantación llave en mano. Lidero un equipo de 3 desarrolladores: nuestro trabajo se mide en tiempo ahorrado y errores evitados.",
-      en: "Activalink implements and customises ERPs for SMBs and large companies. I build custom modules and personalisations on top of Odoo, bespoke integrations, and end-to-end implementation projects. I lead a team of 3 developers: our work is measured in time saved and errors avoided.",
+      es: "Liderazgo técnico en desarrollo frontend y móvil, dirigiendo la arquitectura de aplicaciones multiplataforma con React Native, Expo, Next.js y TypeScript con gestión de estado escalable.",
+      en: "Directing frontend architecture and cross-platform mobile apps using React Native, Expo, Next.js, and TypeScript with scalable state management and team leadership.",
     },
     bullets: [
       {
-        es: "OCR de facturas en Odoo — de 4 h/día a 30 min (−87 %).",
-        en: "Invoice OCR in Odoo — from 4 h/day down to 30 min (−87 %).",
+        es: "Lideré el desarrollo y despliegue de aplicaciones móviles fluidas para Android e iOS con React Native y Expo.",
+        en: "Led mobile app development and cross-platform releases for iOS and Android using React Native & Expo.",
       },
       {
-        es: "Logística con mapa interactivo — −60 % errores de seguimiento.",
-        en: "Interactive logistics map — −60 % tracking errors.",
+        es: "Arquitecté plataformas web empresariales SaaS y paneles de administración interactivos en Next.js 16.",
+        en: "Architected enterprise Next.js 16 SaaS dashboards, interactive data views, and high-scale web apps.",
       },
       {
-        es: "Conciliación automática — cierre contable de 3 días a medio día.",
-        en: "Automated reconciliation — monthly close from 3 days to half a day.",
+        es: "Implementé arquitecturas de estado global predecibles con Redux Toolkit, Zustand y RTK Query.",
+        en: "Streamlined complex state management with Redux Toolkit, Zustand, and automated API caching via RTK Query.",
       },
       {
-        es: "Dashboards financieros — detección temprana de facturas sin emitir.",
-        en: "Financial dashboards — early detection of uninvoiced orders.",
+        es: "Supervisé estándares de código, pipelines CI/CD y mentoría a desarrolladores del equipo.",
+        en: "Mentored engineering team members and established smooth design-to-code production workflows.",
       },
     ],
-    stack: ["Odoo", "Python", "PostgreSQL", "Next.js", "TypeScript", "Docker"],
+    stack: [
+      "React Native",
+      "Expo",
+      "Next.js 16",
+      "TypeScript",
+      "Node.js",
+      "Tailwind CSS",
+      "Redux Toolkit",
+      "Zustand",
+    ],
   },
 ];
 
-function pick<T>(loc: { es: T; en: T }, lang: Lang): T {
-  return loc[lang];
+function pick<T>(loc: { en: T } | T, _lang?: string): T {
+  if (typeof loc === "object" && loc !== null && "en" in loc) {
+    return (loc as { en: T }).en;
+  }
+  return loc as T;
 }
 
 // Hero name split per word so each can rise independently. Whitespace
@@ -262,7 +250,7 @@ export default function Home() {
               data-cursor="hover"
               className="text-sm font-semibold tracking-tight text-ice-100 whitespace-nowrap"
             >
-              Txema Albero
+              Rafiul Islam
             </span>
             {/* Wrapper (not the pill itself) carries the hide: .status-pill
                 hard-sets display:inline-flex, which beats Tailwind's .hidden
@@ -274,20 +262,19 @@ export default function Home() {
           <div className="flex items-center gap-2 pointer-events-auto">
             <SeasonPicker />
             <span className="hidden md:inline-flex">
-            <a
-              href="https://github.com/Txemalon/3d-portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="hover"
-              className="frost-btn !py-1.5 !px-3 !text-xs"
-            >
-              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden>
-                <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-              </svg>
-              <span>GitHub</span>
-            </a>
+              <a
+                href="https://github.com/rafayel-dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="hover"
+                className="frost-btn !py-1.5 !px-3 !text-xs"
+              >
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden>
+                  <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+                <span>GitHub</span>
+              </a>
             </span>
-            <LanguagePicker />
           </div>
         </header>
 
@@ -314,9 +301,9 @@ export default function Home() {
                 {t("hero.greeting")}
               </p>
               <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[8.5rem] font-bold tracking-[-0.03em] text-ice-50 leading-[0.92] whitespace-nowrap">
-                <HeroWord text="Txema" delay={120} />
+                <HeroWord text="Rafiul" delay={120} />
                 <br />
-                <HeroWord text="Albero" delay={260} className="text-ice-400" />
+                <HeroWord text="Islam" delay={260} className="text-ice-400" />
               </h1>
               <p
                 className="mt-8 text-base sm:text-lg md:text-xl text-ice-200 max-w-xl leading-relaxed fade-in-up"
@@ -333,7 +320,7 @@ export default function Home() {
                 style={{ ["--d" as string]: "700ms" }}
               >
                 <a
-                  href={lang === "en" ? "/cv_en.pdf" : "/cv.pdf"}
+                  href="/cv.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="hover"
@@ -366,7 +353,7 @@ export default function Home() {
                     so desktop keeps everything on a single line. */}
                 <div className="basis-full h-0 md:hidden" aria-hidden />
                 <a
-                  href="https://es.linkedin.com/in/jose-mar%C3%ADa-albero-belamendia-b9319a246"
+                  href="https://www.linkedin.com/in/rafayel-dev/"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="hover"
@@ -379,7 +366,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="https://github.com/Txemalon"
+                  href="https://github.com/rafayel-dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="hover"
@@ -409,10 +396,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Stack — desktop relies on the 200vh scroll + sticky title while
-              the keyboard does the talking on hover. On mobile (md:) that
-              choreography is gone, so we drop the tall scroll and render a
-              real, legible skills grid with the same taglines. */}
+          {/* Stack */}
           <section
             data-kb-section="stack"
             className="relative md:min-h-[200vh] p-6 sm:p-10 md:p-14"
@@ -432,8 +416,7 @@ export default function Home() {
                 </Reveal>
               </div>
 
-              {/* Mobile skills grid (recovers the hover interaction as static
-                  content the keyboard can't surface on touch). */}
+              {/* Mobile skills grid */}
               {isMobile && (
                 <div className="md:hidden mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 pointer-events-auto">
                   {SKILLS_FLAT.map((s) => (
@@ -466,12 +449,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Experience — title is sticky at top-24 (feels anchored) but sits
-              BEHIND the cards (z-0 vs. card wrapper's z-10), so as you scroll
-              the card slides over the title. The section has no extra filler
-              beyond the cards, so when you scroll past the last card the
-              section ends and the title un-pins and exits the viewport at the
-              same time — giving the "anchored then both disappear" feel. */}
+          {/* Experience */}
           <section
             data-kb-section="experience"
             className="relative p-6 sm:p-10 md:p-14 pb-24"
@@ -568,11 +546,7 @@ export default function Home() {
                 className={
                   p.align === "left"
                     ? "max-w-xl relative"
-                    : // Right-aligned cards get extra right padding on md+ so
-                      // the action buttons ("Ver más") don't sit under the
-                      // fixed SectionNav dots on the right edge. On mobile they
-                      // collapse to a normal left-aligned full-width card.
-                      "max-w-xl relative md:ml-auto md:text-right md:mr-16 lg:mr-24"
+                    : "max-w-xl relative md:ml-auto md:text-right md:mr-16 lg:mr-24"
                 }
               >
                 <Reveal>
@@ -651,8 +625,7 @@ export default function Home() {
             </section>
           ))}
 
-          {/* Contact — copy pinned to the left so the (large, hero-posed)
-              keyboard on the right has room to bob its random keys. */}
+          {/* Contact */}
           <section
             data-kb-section="contact"
             className="relative py-24 md:min-h-screen flex flex-col justify-center p-6 sm:p-10 md:p-14 overflow-hidden"
@@ -691,7 +664,7 @@ export default function Home() {
                     {t("contact.openMail")}
                   </a>
                   <a
-                    href="https://github.com/Txemalon"
+                    href="https://github.com/rafayel-dev"
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cursor="hover"
@@ -700,13 +673,22 @@ export default function Home() {
                     {t("contact.github")}
                   </a>
                   <a
-                    href="https://es.linkedin.com/in/jose-mar%C3%ADa-albero-belamendia-b9319a246"
+                    href="https://www.linkedin.com/in/rafayel-dev/"
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cursor="hover"
                     className="frost-btn"
                   >
                     {t("contact.linkedin")}
+                  </a>
+                  <a
+                    href="https://wa.me/8801640080338"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor="hover"
+                    className="frost-btn"
+                  >
+                    WhatsApp
                   </a>
                 </div>
               </Reveal>
